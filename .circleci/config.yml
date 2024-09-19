@@ -34,6 +34,12 @@ jobs:
       - run:
           name: run tests
           command: ./vendor/bin/phpunit
+      - run:
+          name: Install dependencies
+          command: composer install --prefer-dist --no-interaction
+      - run:
+          name: Generate application key
+          command: php artisan key:generate
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
